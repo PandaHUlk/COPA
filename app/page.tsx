@@ -12,11 +12,12 @@ export default function Home() {
       const scrollPosition = window.scrollY + 100;
 
       sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.offsetHeight;
+        const htmlElement = section as HTMLElement;
+        const sectionTop = htmlElement.offsetTop;
+        const sectionHeight = htmlElement.offsetHeight;
         const sectionId = section.getAttribute('id');
 
-        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+        if (sectionId && scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
           setActiveSection(sectionId);
         }
       });
@@ -514,3 +515,4 @@ export default function Home() {
     </div>
   );
 }
+
